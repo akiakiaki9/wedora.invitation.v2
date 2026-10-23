@@ -1,9 +1,11 @@
 'use client';
 
 import { use, useEffect, useRef, useState } from 'react';
+import { FiAperture, FiArrowDownRight, FiArrowUpRight, FiCheck } from 'react-icons/fi';
+import { GiFlowerStar } from 'react-icons/gi';
 
 const MAP_URL = 'https://maps.app.goo.gl/41WV3npd4YdzTyEv7';
-const AUDIO_SRC = '/music/Lana%20Del%20Rey%20-%20Cinnamon%20Girl%20(Lyrics).mp3';
+const AUDIO_SRC = '/music/christina-perri-a-thousand-years.mp3';
 const WEDDING_START = new Date('2026-11-01T14:00:00+05:00').getTime();
 const QURAN_VERSE = 'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً';
 const LOCALES = [
@@ -29,7 +31,7 @@ const COPY = {
     quote: 'Два сердца. Одна история.',
     open: 'Открыть приглашение',
     swipe: 'Нажмите, чтобы продолжить',
-    labels: ['Приглашение', 'Наша история', 'Моменты', 'День свадьбы', 'Место', 'С благодарностью', 'До встречи'],
+    labels: ['Приглашение', 'Наша история', 'День свадьбы', 'Место', 'С благодарностью', 'До встречи'],
     inviteTitle: 'Дорогие родные и друзья!',
     inviteText: 'С радостью приглашаем вас разделить с нами один из самых важных и счастливых дней нашей жизни.',
     inviteNote: 'Будем счастливы видеть вас рядом',
@@ -76,7 +78,7 @@ const COPY = {
     quote: 'Two hearts. One story.',
     open: 'Open invitation',
     swipe: 'Tap to continue',
-    labels: ['Invitation', 'Our story', 'Moments', 'Wedding day', 'Venue', 'With gratitude', 'See you soon'],
+    labels: ['Invitation', 'Our story', 'Wedding day', 'Venue', 'With gratitude', 'See you soon'],
     inviteTitle: 'Dear family and friends!',
     inviteText: 'We are delighted to invite you to share one of the most meaningful and joyful days of our lives.',
     inviteNote: 'We will be happy to celebrate with you',
@@ -123,7 +125,7 @@ const COPY = {
     quote: 'Ikki qalb. Bir hikoya.',
     open: 'Taklifnomani ochish',
     swipe: 'Davom etish uchun bosing',
-    labels: ['Taklifnoma', 'Hikoyamiz', 'Lahzalar', 'To‘y kuni', 'Manzil', 'Minnatdorchilik', 'Ko‘rishguncha'],
+    labels: ['Taklifnoma', 'Hikoyamiz', 'To‘y kuni', 'Manzil', 'Minnatdorchilik', 'Ko‘rishguncha'],
     inviteTitle: 'Aziz yaqinlarimiz!',
     inviteText: 'Hayotimizdagi eng muhim va quvonchli kunlardan birini biz bilan birga nishonlashga sizni taklif qilamiz.',
     inviteNote: 'Sizni yonimizda ko‘rishdan baxtiyormiz',
@@ -170,7 +172,7 @@ const COPY = {
     quote: 'Икки қалб. Бир ҳикоя.',
     open: 'Таклифномани очиш',
     swipe: 'Давом этиш учун босинг',
-    labels: ['Таклифнома', 'Ҳикоямиз', 'Лаҳзалар', 'Тўй куни', 'Манзил', 'Миннатдорчилик', 'Кўришгунча'],
+    labels: ['Таклифнома', 'Ҳикоямиз', 'Тўй куни', 'Манзил', 'Миннатдорчилик', 'Кўришгунча'],
     inviteTitle: 'Азиз яқинларимиз!',
     inviteText: 'Ҳаётимиздаги энг муҳим ва қувончли кунлардан бирини биз билан бирга нишонлашга сизларни таклиф қиламиз.',
     inviteNote: 'Сизни ёнимизда кўришдан бахтиёрмиз',
@@ -204,7 +206,7 @@ const COPY = {
   },
 };
 
-const SECTION_IDS = ['cover', 'invitation', 'story', 'gallery', 'event', 'location', 'thanks', 'final'];
+const SECTION_IDS = ['cover', 'invitation', 'story', 'event', 'location', 'thanks', 'final'];
 
 function BotanicalOrnament({ className = '' }) {
   return (
@@ -393,14 +395,14 @@ export default function InvitationPage({ params }) {
             <p className="hero-prelude">{t.quote}</p>
             <h1>{t.names}</h1>
             <p className="hero-date">{t.date}<span>·</span>14:00</p>
-            <div className="hero-ornament" aria-hidden="true"><i /><span>✳</span><i /></div>
+            <div className="hero-ornament" aria-hidden="true"><i /><FiAperture className="ornament-icon" /><i /></div>
             <button className="open-button" type="button" onClick={openInvitation}>
-              <span className="open-icon" aria-hidden="true">{isUnlocked ? '✓' : '↘'}</span>
+              <span className="open-icon" aria-hidden="true">{isUnlocked ? <FiCheck /> : <FiArrowDownRight />}</span>
               {isUnlocked ? t.labels[0] : t.open}
             </button>
             {!isUnlocked && <p className="open-hint">{t.swipe}</p>}
           </div>
-          <span className="hero-index">01 <i /> 08</span>
+          <span className="hero-index">01 <i /> 07</span>
           {musicError && <p className="music-error" role="status">{t.musicError}</p>}
           {(!isUnlocked || curtainsOpening) && (
             <div className={`curtain-layer ${curtainsOpening ? 'curtain-opening' : ''}`} aria-hidden="true">
@@ -427,7 +429,7 @@ export default function InvitationPage({ params }) {
               <BotanicalOrnament className="invitation-botanical" />
               <div className="invitation-copy">
                 <p className="section-kicker">{t.badge}</p>
-                <span className="section-flourish" aria-hidden="true">✳</span>
+                <span className="section-flourish" aria-hidden="true"><FiAperture className="ornament-icon" /></span>
                 <h2>{t.inviteTitle}</h2>
                 <p className="invitation-message">{t.inviteText}</p>
                 <blockquote className="quran-verse">
@@ -450,7 +452,7 @@ export default function InvitationPage({ params }) {
             >
               <div className="story-medallion" aria-hidden="true">
                 <BotanicalOrnament />
-                <span>✿</span>
+                <GiFlowerStar className="botanical-mark" />
                 <i />
               </div>
               <div className="story-copy">
@@ -463,9 +465,9 @@ export default function InvitationPage({ params }) {
               <span className="section-index">03</span>
             </section>
 
+            {/*
             <section
               id="gallery"
-              ref={(element) => { sectionRefs.current[3] = element; }}
               className="snap-section gallery-section"
             >
               <div className="gallery-heading">
@@ -475,17 +477,18 @@ export default function InvitationPage({ params }) {
               <div className="gallery-art" aria-hidden="true">
                 <div className="gallery-arch">
                   <BotanicalOrnament className="gallery-botanical" />
-                  <span className="gallery-rose">✿</span>
+                  <span className="gallery-rose"><GiFlowerStar className="botanical-mark" /></span>
                 </div>
-                <span className="gallery-seal">A <i>✳</i> Y</span>
+                <span className="gallery-seal">A <i><FiAperture className="seal-ornament" /></i> Y</span>
                 <div className="gallery-petals"><i /><i /><i /><i /><i /></div>
               </div>
               <span className="section-index">04</span>
             </section>
+            */}
 
             <section
               id="event"
-              ref={(element) => { sectionRefs.current[4] = element; }}
+              ref={(element) => { sectionRefs.current[3] = element; }}
               className="snap-section event-section"
             >
               <div className="event-floral-wash" aria-hidden="true" />
@@ -497,7 +500,7 @@ export default function InvitationPage({ params }) {
                   <div className="event-date-info">
                     <div className="date-number"><span>{t.month}</span><strong>01</strong><small>2026</small></div>
                     <div className="date-details">
-                      <p><span>{t.labels[3]}</span><strong>{t.weekday}</strong></p>
+                      <p><span>{t.labels[2]}</span><strong>{t.weekday}</strong></p>
                       <p><span>{t.timeLabel}</span><strong>14:00</strong></p>
                       <p><span>{t.placeLabel}</span><strong>Bonu Restaurant</strong></p>
                     </div>
@@ -523,12 +526,12 @@ export default function InvitationPage({ params }) {
                 </div>
                 <p className="event-note">{t.eventNote}</p>
               </div>
-              <span className="section-index">05</span>
+              <span className="section-index">04</span>
             </section>
 
             <section
               id="location"
-              ref={(element) => { sectionRefs.current[5] = element; }}
+              ref={(element) => { sectionRefs.current[4] = element; }}
               className="snap-section location-section"
             >
               <div className="location-copy">
@@ -536,7 +539,7 @@ export default function InvitationPage({ params }) {
                 <h2>{t.locationTitle}</h2>
                 <p>{t.locationText}</p>
                 <a className="map-button" href={MAP_URL} target="_blank" rel="noopener noreferrer">
-                  <span>{t.mapButton}</span><b aria-hidden="true">↗</b>
+                  <span>{t.mapButton}</span><b aria-hidden="true"><FiArrowUpRight /></b>
                 </a>
                 <p className="location-address">{t.addressLabel} <span>Bonu Restaurant</span></p>
               </div>
@@ -546,32 +549,32 @@ export default function InvitationPage({ params }) {
                 <div className="map-park park-two" aria-hidden="true" />
                 <div className="map-road road-one" aria-hidden="true" />
                 <div className="map-road road-two" aria-hidden="true" />
-                <div className="map-pin" aria-hidden="true"><span>✳</span></div>
+                <div className="map-pin" aria-hidden="true"><span><FiAperture /></span></div>
                 <span className="map-caption">BONU<br />RESTAURANT</span>
-                <span className="map-open-icon" aria-hidden="true">↗</span>
+                <span className="map-open-icon" aria-hidden="true"><FiArrowUpRight /></span>
               </a>
-              <span className="section-index">06</span>
+              <span className="section-index">05</span>
             </section>
 
             <section
               id="thanks"
-              ref={(element) => { sectionRefs.current[6] = element; }}
+              ref={(element) => { sectionRefs.current[5] = element; }}
               className="snap-section thanks-section"
             >
-              <div className="thanks-seal" aria-hidden="true"><BotanicalOrnament /><span>✿</span></div>
+              <div className="thanks-seal" aria-hidden="true"><BotanicalOrnament /><GiFlowerStar className="botanical-mark" /></div>
               <div className="thanks-copy">
                 <p className="section-kicker">{t.thanksKicker}</p>
-                <span className="section-flourish" aria-hidden="true">✳</span>
+                <span className="section-flourish" aria-hidden="true"><FiAperture className="ornament-icon" /></span>
                 <h2 dangerouslySetInnerHTML={{ __html: t.thanksTitle }} />
                 <p>{t.thanksText}</p>
                 <div className="story-signature">{t.names}</div>
               </div>
-              <span className="section-index">07</span>
+              <span className="section-index">06</span>
             </section>
 
             <section
               id="final"
-              ref={(element) => { sectionRefs.current[7] = element; }}
+              ref={(element) => { sectionRefs.current[6] = element; }}
               className="snap-section final-section"
             >
               <div className="final-photo" aria-hidden="true" />
@@ -582,11 +585,11 @@ export default function InvitationPage({ params }) {
               <div className="final-copy">
                 <p className="section-kicker">{t.finalKicker}</p>
                 <h2 dangerouslySetInnerHTML={{ __html: t.finalTitle }} />
-                <span className="hero-ornament" aria-hidden="true"><i /><span>✳</span><i /></span>
+                <span className="hero-ornament" aria-hidden="true"><i /><FiAperture className="ornament-icon" /><i /></span>
                 <p className="final-date">{t.finalDate}</p>
                 <div className="final-names">{t.names}</div>
               </div>
-              <span className="section-index">08</span>
+              <span className="section-index">07</span>
             </section>
           </>
         )}

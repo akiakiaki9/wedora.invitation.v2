@@ -339,8 +339,11 @@ a {
   opacity: .75;
 }
 
-.hero-ornament span {
-  font-size: 16px;
+.ornament-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  stroke-width: 1.5;
 }
 
 .open-button {
@@ -369,8 +372,16 @@ a {
 }
 
 .open-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold-light);
-  font-size: 17px;
+}
+
+.open-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.7;
 }
 
 .open-button:hover .open-icon {
@@ -721,7 +732,6 @@ a {
   display: block;
   margin: 12px 0 4px;
   color: var(--gold);
-  font-size: 20px;
 }
 
 .invitation-copy h2,
@@ -881,13 +891,14 @@ a {
   color: var(--gold-light);
 }
 
-.story-medallion > span,
-.thanks-seal > span {
+.story-medallion > .botanical-mark,
+.thanks-seal > .botanical-mark {
   position: absolute;
   z-index: 2;
+  width: clamp(48px, 8vw, 100px);
+  height: clamp(48px, 8vw, 100px);
   color: var(--rose-light);
-  font-family: var(--serif);
-  font-size: clamp(48px, 8vw, 100px);
+  stroke-width: 1.2;
 }
 
 .story-medallion > i {
@@ -1020,10 +1031,17 @@ a {
   position: absolute;
   top: 30%;
   left: 36%;
+  display: grid;
+  width: clamp(50px, 8vw, 95px);
+  height: clamp(50px, 8vw, 95px);
+  place-items: center;
   color: var(--rose);
-  font-family: var(--serif);
-  font-size: clamp(50px, 8vw, 95px);
-  text-shadow: 0 2px 0 var(--gold-light);
+}
+
+.gallery-rose .botanical-mark {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.2;
 }
 
 .gallery-seal {
@@ -1045,9 +1063,16 @@ a {
 }
 
 .gallery-seal i {
-  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold-light);
-  font-size: 12px;
+}
+
+.gallery-seal .seal-ornament {
+  width: 13px;
+  height: 13px;
+  stroke-width: 1.5;
 }
 
 .gallery-petals {
@@ -1312,8 +1337,16 @@ a {
 }
 
 .map-button b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold-light);
-  font-size: 16px;
+}
+
+.map-button b svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.7;
 }
 
 .location-address {
@@ -1426,8 +1459,15 @@ a {
 }
 
 .map-pin span {
+  display: inline-flex;
   transform: rotate(45deg);
   color: var(--gold-light);
+}
+
+.map-pin span svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.5;
 }
 
 .map-caption {
@@ -1458,6 +1498,12 @@ a {
   color: var(--wine);
 }
 
+.map-open-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.7;
+}
+
 .thanks-section {
   justify-content: flex-start;
   background:
@@ -1485,7 +1531,7 @@ a {
   transform: rotate(14deg);
 }
 
-.thanks-seal > span {
+.thanks-seal > .botanical-mark {
   color: var(--gold);
 }
 
@@ -1859,8 +1905,9 @@ a {
     transform: none;
   }
 
-  .story-medallion > span {
-    font-size: 54px;
+  .story-medallion > .botanical-mark {
+    width: 54px;
+    height: 54px;
   }
 
   .story-copy {
@@ -2072,8 +2119,9 @@ a {
     transform: none;
   }
 
-  .thanks-seal > span {
-    font-size: 52px;
+  .thanks-seal > .botanical-mark {
+    width: 52px;
+    height: 52px;
   }
 
   .thanks-copy {

@@ -19,4 +19,4 @@ The invitation uses two decorative wedding background images from Unsplash inste
 
 The images are covered by the [Unsplash License](https://unsplash.com/license). The Arabic verse is Quran 30:21 (Surah Ar-Rum); its reference is displayed in the invitation.
 
-The local background images and music are in `public/`. The venue links to Bonu Restaurant on Google Maps. Edit `src/app/[lang]/page.js` to change translated text or event details.
+The local background images and music are in `public/`. The invitation music is Christina Perri's “A Thousand Years (PianoCello Cover)”; a browser-compatible MP3 is provided in `public/music/`. The venue links to Bonu Restaurant on Google Maps. Edit `src/app/[lang]/page.js` to change translated text or event details.
